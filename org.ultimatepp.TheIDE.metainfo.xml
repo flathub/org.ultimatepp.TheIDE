@@ -10,9 +10,9 @@
     <description>
         <p>
             TheIDE is an integrated development environment for the U++ cross-platform app development framework
-            dedicated to the C++ programming language. It can also handle general-purpose C/C++ projects.
-            It is also an excellent IDE for people starting their journey with C/C++ programming and looking for an
-            easy-to-use environment with functionalities such as a very simple-build system, code completion, and debugger support.
+            dedicated to the C++ programming language. It can handle general-purpose C/C++ projects as well.
+            Additionally, it is an excellent IDE for people starting their journey with C/C++ programming and looking for an
+            easy-to-use environment with features like a simple-to-use build system, code completion, and debugger support.
         </p>
 
         <p>
