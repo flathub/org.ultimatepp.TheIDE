@@ -106,8 +106,8 @@ modules:
       - install -Dm755 host-spawn /app/bin/host-spawn
     sources:
       - type: archive
-        url: https://github.com/1player/host-spawn/archive/refs/tags/1.5.0.tar.gz
-        sha256: 5802e86eb4e9523ede02228a6673ac0402940ea0ca5018a8d6b7aebc4781cb77
+        url: https://github.com/1player/host-spawn/archive/refs/tags/v1.5.1.tar.gz
+        sha256: cc62c0584731c43b25b57a08136682a8def357e273de4606192a4b33abde84f2
       - type: git
         url: https://github.com/godbus/dbus
         tag: v5.1.0
@@ -120,8 +120,6 @@ modules:
         url: https://go.googlesource.com/sys
         tag: v0.15.0
         dest: vendor/golang.org/x/sys
-      - type: patch
-        path: patches/host-spawn.patch
       - type: file
         path: host-spawn/modules.txt
         dest: vendor/
