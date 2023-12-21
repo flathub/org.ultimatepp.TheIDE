@@ -9,12 +9,12 @@ This repository acts as a recipe for building TheIDE as a flatpak package. TheID
 ### Requiremenets
 
 To build this flatpak localy, you need to install following package:
-```
+```bash
 flatpak install org.flatpak.Builder
 ```
 
 Additionaly, if you want you can install dependencies manualy, by running following commands:
-```
+```bash
 flatpak install flathub org.gnome.Platform
 flatpak install org.freedesktop.Sdk.Extension.llvm17
 flatpak install org.freedesktop.Sdk.Extension.golang
@@ -23,37 +23,44 @@ flatpak install org.freedesktop.Sdk.Extension.golang
 ### Building
 
 To build flatpak locally run the following command in your terminal:
-```
+```bash
 flatpak-builder --ccache --user --install --force-clean build-dir org.ultimatepp.TheIDE.yml
 ```
 
 The `--ccache` parameter is higly recommended since it speedsup build time signficiently. Especially in situation when there is a need to build project several times.
 
 Alternativly, if you want to execute full build with dependency installation run:
-```
+```bash
 flatpak run org.flatpak.Builder --force-clean --sandbox --user --install --install-deps-from=flathub --ccache --mirror-screenshots-url=https://dl.flathub.org/repo/screenshots --repo=repo build-dir org.ultimatepp.TheIDE.yml
 ```
 
 In case if above command fails on install dependencies step try to use following command:
-```
+```bash
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
 ### Running
 
 To run build flatpak simple run:
-```
+```bash
 flatpak run org.ultimatepp.TheIDE
 ```
 
 ### Uninstalling
 
 To uninstall please execute following command:
-```
+```bash
 flatpak uninstall --delete-data org.ultimatepp.TheIDE
 ```
 
 The `--delete-data` parameter can be skipped, however when there is a need to simulate running TheIDE for the first time, it is required. Also, for making absolute clean run, U++ framework sources that should be placed in `~/.local/src/upp` must be deleted. Without it the initial terminal asking about installing host dependencies will not appear.
+
+### host-spawn
+
+To generate host-spawn/modules.txt run following command in the host-spawn repository:
+```bash
+go mod vendor
+```
 
 ## Known limitations
 
