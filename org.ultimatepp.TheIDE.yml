@@ -33,7 +33,7 @@ modules:
     buildsystem: simple
     build-commands:
       - printf "#define flagFlatpak 1\\n" > uppsrc/uppconfig.h
-      - printf "#define IDE_VERSION \"2023.2 (rev. 17045)\"\\n" > uppsrc/ide/version.h
+      - printf "#define IDE_VERSION \"2023.2\"\\n" > uppsrc/ide/version.h
       - make -f Makefile -j $FLATPAK_BUILDER_N_JOBS
       - printf "\\n" > uppsrc/uppconfig.h
       - make -f umkMakefile.in -j $FLATPAK_BUILDER_N_JOBS
@@ -54,7 +54,9 @@ modules:
       - cp .clang-format /app/src/uppsrc/.clang-format
       - cp uppbox/Scripts/GCCMK.bm /app/bm/GCC.bm
       - cp run-ide-install-host-deps.sh /app/src/run-ide-install-host-deps.sh
-      - cp -r /usr/lib/sdk/llvm17/lib /app
+      - cp /usr/lib/sdk/llvm17/lib/libLLVM* /app/lib/
+      - cp /usr/lib/sdk/llvm17/lib/libclang.* /app/lib/
+      - cp /usr/lib/sdk/llvm17/lib/LLVMgold.so /app/lib/
     sources:
       - type: archive
         url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2023.2.tar.gz
