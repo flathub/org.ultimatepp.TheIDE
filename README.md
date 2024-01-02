@@ -62,9 +62,9 @@ To generate host-spawn/modules.txt run following command in the host-spawn repos
 go mod vendor
 ```
 
-### Optimazing size
+### Optimizing size
 
-In order to check flatpak size after local build following command can be executed:
+In order to check flatpak size after local build, the following command can be executed:
 ```bash
 flatpak list --app --columns=size,name|sort -g
 ```
