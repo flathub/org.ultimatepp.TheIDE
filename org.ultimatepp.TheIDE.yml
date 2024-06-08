@@ -3,7 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - "org.freedesktop.Sdk.Extension.llvm17"
+  - "org.freedesktop.Sdk.Extension.llvm18"
   - "org.freedesktop.Sdk.Extension.golang"
 command: run-ide.sh
 cleanup:
