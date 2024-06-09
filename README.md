@@ -16,7 +16,7 @@ flatpak install org.flatpak.Builder
 Additionaly, if you want you can install dependencies manualy, by running following commands:
 ```bash
 flatpak install flathub org.gnome.Platform
-flatpak install org.freedesktop.Sdk.Extension.llvm17
+flatpak install org.freedesktop.Sdk.Extension.llvm18
 flatpak install org.freedesktop.Sdk.Extension.golang
 ```
 
