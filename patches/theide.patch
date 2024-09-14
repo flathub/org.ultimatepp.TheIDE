@@ -13,6 +13,33 @@ index 5a396d00d..93f54ee1e 100644
  #ifdef _MSC_VER
  	#define COMPILER_MSC 1
  	#if _MSC_VER <= 1300
+diff --git a/uppsrc/Draw/FontFc.cpp b/uppsrc/Draw/FontFc.cpp
+index c0d37b590..64d4e5b68 100644
+--- a/uppsrc/Draw/FontFc.cpp
++++ b/uppsrc/Draw/FontFc.cpp
+@@ -297,10 +297,9 @@ bool RenderOutline(const FT_Outline& outline, FontGlyphConsumer& path, double xx
+ 	FT_Vector   v_start;
+ 	FT_Vector*  point;
+ 	FT_Vector*  limit;
+-	char*       tags;
+ 	int   n;         // index of contour in outline
+-	char  tag;       // current point's state
+ 	int   first = 0; // index of first point in contour
++
+ 	for(n = 0; n < outline.n_contours; n++) {
+ 		int  last = outline.contours[n];
+ 		limit = outline.points + last;
+@@ -308,8 +307,8 @@ bool RenderOutline(const FT_Outline& outline, FontGlyphConsumer& path, double xx
+ 		v_last  = outline.points[last];
+ 		v_control = v_start;
+ 		point = outline.points + first;
+-		tags  = outline.tags  + first;
+-		tag   = FT_CURVE_TAG(tags[0]);
++		const auto *tags  = outline.tags  + first;
++		auto tag   = FT_CURVE_TAG(tags[0]);
+ 		if(tag == FT_CURVE_TAG_CUBIC) return false;
+ 		if(tag == FT_CURVE_TAG_CONIC) {
+ 			if(FT_CURVE_TAG(outline.tags[last]) == FT_CURVE_TAG_ON) {
 diff --git a/uppsrc/ide/About.cpp b/uppsrc/ide/About.cpp
 index 3dff91072..80ef8e9d9 100644
 --- a/uppsrc/ide/About.cpp
@@ -357,7 +384,7 @@ index cab39add6..dcb8dca3e 100644
  
  	INTERLOCKED // as there is just single static 'use'
 diff --git a/uppsrc/ide/idebar.cpp b/uppsrc/ide/idebar.cpp
-index e163e4c33..b74f7ebda 100644
+index 8400af45f..3126ce690 100644
 --- a/uppsrc/ide/idebar.cpp
 +++ b/uppsrc/ide/idebar.cpp
 @@ -418,17 +418,20 @@ void Ide::Setup(Bar& menu)
