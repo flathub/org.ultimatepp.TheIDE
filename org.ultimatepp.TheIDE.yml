@@ -1,6 +1,6 @@
 id: org.ultimatepp.TheIDE
 runtime: org.freedesktop.Platform
-runtime-version: "23.08"
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - "org.freedesktop.Sdk.Extension.llvm18"
@@ -16,24 +16,11 @@ finish-args:
   - --filesystem=host
   - --talk-name=org.freedesktop.Flatpak
 modules:
-  - name: libnotify
-    buildsystem: meson
-    config-opts:
-      - -Dtests=false
-      - -Dintrospection=disabled
-      - -Dman=false
-      - -Dgtk_doc=false
-      - -Ddocbook_docs=disabled
-    sources:
-      - type: archive
-        url: https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.3.tar.xz
-        sha256: ee8f3ef946156ad3406fdf45feedbdcd932dbd211ab4f16f75eba4f36fb2f6c0
-
   - name: upp
     buildsystem: simple
     build-commands:
       - printf "#define flagFlatpak 1\\n" > uppsrc/uppconfig.h
-      - printf "#define IDE_VERSION \"2023.2\"\\n" > uppsrc/ide/version.h
+      - printf "#define IDE_VERSION \"2023.2.1\"\\n" > uppsrc/ide/version.h
       - make -f Makefile -j $FLATPAK_BUILDER_N_JOBS
       - printf "\\n" > uppsrc/uppconfig.h
       - make -f umkMakefile.in -j $FLATPAK_BUILDER_N_JOBS
@@ -46,7 +33,7 @@ modules:
       - mkdir -p /app/{src,lib,bm}
       - printf "\\n" > uppsrc/uppconfig.h
       - rm -f /app/src/ver.txt && touch /app/src/ver.txt
-      - printf "2023.2" > /app/src/ver.txt
+      - printf "2023.2.1" > /app/src/ver.txt
       - cp -r examples /app/src
       - cp -r reference /app/src
       - cp -r tutorial /app/src
@@ -88,7 +75,7 @@ modules:
         dest: 3p/Terminal
       - type: archive
         url: https://github.com/ultimatepp/ultimatepp/releases/download/2023.2/uppsrc-17045.tar.gz
-        sha256: 23793a363a140139728a30cc050c35287d6ff97ee03125d62f8ad8acf06e40af
+        sha256: 456b4b092a8a4231e00a7746003454047a0b3d4c948c92860b8842c3cae0838b
         dest: 3p/uppsrc
 
   - name: run-ide
