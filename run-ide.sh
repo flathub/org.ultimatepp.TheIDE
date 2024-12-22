@@ -53,7 +53,7 @@ if [ $deps_installed -eq 0 ]; then
 fi
 
 migrate_build_methods() {
-    regex='s/-std=c++14/-std=c++17/g'
+    regex="s/$1/$2/g"
 
     if [ -f $clang_bm ]; then
         sed -i "$regex" $clang_bm
@@ -62,6 +62,6 @@ migrate_build_methods() {
         sed -i "$regex" $gcc_bm
     fi
 }
-migrate_build_methods
+migrate_build_methods -std=c++14 -std=c++17
 
 theide
