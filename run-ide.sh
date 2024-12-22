@@ -4,6 +4,10 @@ user_src_dir=~/.local/src
 user_upp_src_dir=$user_src_dir/upp
 deps_installed_lock_file=$user_upp_src_dir/deps.lock.txt
 
+config_dir=~/.var/app/org.ultimatepp.TheIDE/config/u++/theide
+clang_bm=$config_dir/CLANG.bm
+gcc_bm=$config_dir/GCC.bm
+
 is_the_same_src_version() {
     upp_ver_file_path=$user_upp_src_dir/ver.txt
     if [ ! -f $upp_ver_file_path ]; then
@@ -47,5 +51,17 @@ if [ $deps_installed -eq 0 ]; then
     fi
     touch $deps_installed_lock_file
 fi
+
+migrate_build_methods() {
+    regex='s/-std=c++14/-std=c++17/g'
+
+    if [ -f $clang_bm ]; then
+        sed -i "$regex" $clang_bm
+    fi
+    if [ -f $gcc_bm ]; then
+        sed -i "$regex" $gcc_bm
+    fi
+}
+migrate_build_methods
 
 theide
