@@ -55,8 +55,6 @@ modules:
         path: run-ide-install-host-deps.sh
       - type: patch
         path: patches/bm.patch
-      - type: patch
-        path: patches/theide.patch
 
   - name: upp-term
     buildsystem: simple
