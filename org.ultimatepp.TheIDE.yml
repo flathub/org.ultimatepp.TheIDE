@@ -76,7 +76,7 @@ modules:
         dest: 3p/Terminal
       - type: archive
         url: https://github.com/ultimatepp/ultimatepp/releases/download/2024.1.1/uppsrc-17459.tar.gz
-        sha256: 3a486a9799fdc7f5389bccc8aa1c0632a944a9518ced9fb62a92d3cf969c048d
+        sha256: 9495877a86a3a81e47d75da9675bea0ff50034eb10820bac89baf62c23822013
         dest: 3p/uppsrc
 
   - name: run-ide
