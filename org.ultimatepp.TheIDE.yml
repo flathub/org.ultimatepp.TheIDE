@@ -3,7 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - "org.freedesktop.Sdk.Extension.llvm18"
+  - "org.freedesktop.Sdk.Extension.llvm19"
   - "org.freedesktop.Sdk.Extension.golang"
 command: run-ide.sh
 cleanup:
@@ -42,11 +42,11 @@ modules:
       - cp .clang-format /app/src/uppsrc/.clang-format
       - cp uppbox/Scripts/GCCMK.bm /app/bm/GCC.bm
       - cp run-ide-install-host-deps.sh /app/src/run-ide-install-host-deps.sh
-      - cp -a /usr/lib/sdk/llvm18/lib/libLLVM* /app/lib/
-      - cp -a /usr/lib/sdk/llvm18/lib/libLLVMTableGen.so* /app/lib/
-      - cp -a /usr/lib/sdk/llvm18/lib/libclang.so* /app/lib/
-      - cp -a /usr/lib/sdk/llvm18/lib/libclang-cpp.so* /app/lib/
-      - cp /usr/lib/sdk/llvm18/lib/LLVMgold.so /app/lib/
+      - cp -a /usr/lib/sdk/llvm19/lib/libLLVM* /app/lib/
+      - cp -a /usr/lib/sdk/llvm19/lib/libLLVMTableGen.so* /app/lib/
+      - cp -a /usr/lib/sdk/llvm19/lib/libclang.so* /app/lib/
+      - cp -a /usr/lib/sdk/llvm19/lib/libclang-cpp.so* /app/lib/
+      - cp /usr/lib/sdk/llvm19/lib/LLVMgold.so /app/lib/
     sources:
       - type: archive
         url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2024.1.1.tar.gz
@@ -73,7 +73,7 @@ modules:
         sha256: 055c3b3e5011c93ff2c11abf649455fc4e3e7642ea7032738506e88910e86224
         dest: 3p/Terminal
       - type: archive
-        url: https://github.com/ultimatepp/ultimatepp/releases/download/2024.1.1/uppsrc-17459.tar.gz
+        url: https://github.com/ultimatepp/ultimatepp/releases/download/2024.1.1/uppsrc-17490.tar.gz
         sha256: 9495877a86a3a81e47d75da9675bea0ff50034eb10820bac89baf62c23822013
         dest: 3p/uppsrc
 
