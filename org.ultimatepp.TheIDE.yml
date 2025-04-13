@@ -53,6 +53,8 @@ modules:
         sha256: bc8f91b2d6755662ef80a9bf9ddd402ccf4a34642ba287a68dcb6449d873b881
       - type: file
         path: run-ide-install-host-deps.sh
+      - type: patch
+        path: patches/execute.patch
 
   - name: upp-term
     buildsystem: simple
