@@ -11,7 +11,7 @@ cleanup:
   - /bin/umk
   - /bm
 finish-args:
-  - --socket=fallback-x11
+  - --socket=x11
   - --share=network
   - --share=ipc
   - --filesystem=host
