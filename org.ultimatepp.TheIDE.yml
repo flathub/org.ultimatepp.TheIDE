@@ -21,7 +21,7 @@ modules:
     buildsystem: simple
     build-commands:
       - printf "#define flagFlatpak 1\\n" > uppsrc/uppconfig.h
-      - printf "#define IDE_VERSION \"2024.1.1\"\\n" > uppsrc/ide/version.h
+      - printf "#define IDE_VERSION \"2025.1\"\\n" > uppsrc/ide/version.h
       - make -f Makefile -j $FLATPAK_BUILDER_N_JOBS
       - printf "\\n" > uppsrc/uppconfig.h
       - make -f umkMakefile.in -j $FLATPAK_BUILDER_N_JOBS
@@ -34,7 +34,7 @@ modules:
       - mkdir -p /app/{src,lib,bm}
       - printf "\\n" > uppsrc/uppconfig.h
       - rm -f /app/src/ver.txt && touch /app/src/ver.txt
-      - printf "2024.1.1" > /app/src/ver.txt
+      - printf "2025.1" > /app/src/ver.txt
       - cp -r examples /app/src
       - cp -r reference /app/src
       - cp -r tutorial /app/src
@@ -49,12 +49,12 @@ modules:
       - cp /usr/lib/sdk/llvm19/lib/LLVMgold.so /app/lib/
     sources:
       - type: archive
-        url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2024.1.1.tar.gz
-        sha256: cce3a7a75b824e0b827dc117b35704e7db15690a367b1f32733a2a98ee511b83
+        url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2025.1.tar.gz
+        sha256: bc8f91b2d6755662ef80a9bf9ddd402ccf4a34642ba287a68dcb6449d873b881
       - type: file
         path: run-ide-install-host-deps.sh
       - type: patch
-        path: patches/bm.patch
+        path: patches/execute.patch
 
   - name: upp-term
     buildsystem: simple
@@ -73,8 +73,8 @@ modules:
         sha256: 055c3b3e5011c93ff2c11abf649455fc4e3e7642ea7032738506e88910e86224
         dest: 3p/Terminal
       - type: archive
-        url: https://github.com/ultimatepp/ultimatepp/releases/download/2024.1.1/uppsrc-17490.tar.gz
-        sha256: 9495877a86a3a81e47d75da9675bea0ff50034eb10820bac89baf62c23822013
+        url: https://github.com/ultimatepp/ultimatepp/releases/download/2025.1/uppsrc-17799.tar.gz
+        sha256: 4e12f2b3d3848ee6f344525f27caea3babf6c811ec229b8e03550567d1954fa5
         dest: 3p/uppsrc
 
   - name: run-ide
@@ -96,8 +96,8 @@ modules:
       - install -Dm755 host-spawn /app/bin/host-spawn
     sources:
       - type: archive
-        url: https://github.com/1player/host-spawn/archive/refs/tags/v1.6.0.tar.gz
-        sha256: 62048a0dc058b7a58e66d1a4f856f3987f8f63d3dc41e5d8df48cb23cc9400e7
+        url: https://github.com/1player/host-spawn/archive/refs/tags/v1.6.1.tar.gz
+        sha256: 79d1038a055c408e364e3ba9ea21f7b8f0ecd3f2aa4b99d26c653bc678f796bb
       - type: git
         url: https://github.com/godbus/dbus
         tag: v5.1.0
