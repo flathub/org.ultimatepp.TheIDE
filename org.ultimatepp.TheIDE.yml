@@ -3,7 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - "org.freedesktop.Sdk.Extension.llvm19"
+  - "org.freedesktop.Sdk.Extension.llvm20"
   - "org.freedesktop.Sdk.Extension.golang"
 command: run-ide.sh
 cleanup:
@@ -21,7 +21,7 @@ modules:
     buildsystem: simple
     build-commands:
       - printf "#define flagFlatpak 1\\n" > uppsrc/uppconfig.h
-      - printf "#define IDE_VERSION \"2025.1\"\\n" > uppsrc/ide/version.h
+      - printf "#define IDE_VERSION \"2025.1.1\"\\n" > uppsrc/ide/version.h
       - make -f Makefile -j $FLATPAK_BUILDER_N_JOBS
       - printf "\\n" > uppsrc/uppconfig.h
       - make -f umkMakefile.in -j $FLATPAK_BUILDER_N_JOBS
@@ -34,7 +34,7 @@ modules:
       - mkdir -p /app/{src,lib,bm}
       - printf "\\n" > uppsrc/uppconfig.h
       - rm -f /app/src/ver.txt && touch /app/src/ver.txt
-      - printf "2025.1" > /app/src/ver.txt
+      - printf "2025.1.1" > /app/src/ver.txt
       - cp -r examples /app/src
       - cp -r reference /app/src
       - cp -r tutorial /app/src
@@ -42,15 +42,15 @@ modules:
       - cp .clang-format /app/src/uppsrc/.clang-format
       - cp uppbox/Scripts/GCCMK.bm /app/bm/GCC.bm
       - cp run-ide-install-host-deps.sh /app/src/run-ide-install-host-deps.sh
-      - cp -a /usr/lib/sdk/llvm19/lib/libLLVM* /app/lib/
-      - cp -a /usr/lib/sdk/llvm19/lib/libLLVMTableGen.so* /app/lib/
-      - cp -a /usr/lib/sdk/llvm19/lib/libclang.so* /app/lib/
-      - cp -a /usr/lib/sdk/llvm19/lib/libclang-cpp.so* /app/lib/
-      - cp /usr/lib/sdk/llvm19/lib/LLVMgold.so /app/lib/
+      - cp -a /usr/lib/sdk/llvm20/lib/libLLVM* /app/lib/
+      - cp -a /usr/lib/sdk/llvm20/lib/libLLVMTableGen.so* /app/lib/
+      - cp -a /usr/lib/sdk/llvm20/lib/libclang.so* /app/lib/
+      - cp -a /usr/lib/sdk/llvm20/lib/libclang-cpp.so* /app/lib/
+      - cp /usr/lib/sdk/llvm20/lib/LLVMgold.so /app/lib/
     sources:
       - type: archive
-        url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2025.1.tar.gz
-        sha256: bc8f91b2d6755662ef80a9bf9ddd402ccf4a34642ba287a68dcb6449d873b881
+        url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2025.1.1.tar.gz
+        sha256: de908431e1ed29b4cf05e775108cf0b13d5a1c6921e63c2ddf623dbcbe3f0646
       - type: file
         path: run-ide-install-host-deps.sh
       - type: patch
@@ -73,8 +73,8 @@ modules:
         sha256: 055c3b3e5011c93ff2c11abf649455fc4e3e7642ea7032738506e88910e86224
         dest: 3p/Terminal
       - type: archive
-        url: https://github.com/ultimatepp/ultimatepp/releases/download/2025.1/uppsrc-17799.tar.gz
-        sha256: 4e12f2b3d3848ee6f344525f27caea3babf6c811ec229b8e03550567d1954fa5
+        url: https://github.com/ultimatepp/ultimatepp/releases/download/2025.1.1/uppsrc-17810.tar.gz
+        sha256: 5f1afd7afdb235801e952d9de84248fb0fe32f423cd26dd5920739dd60215744
         dest: 3p/uppsrc
 
   - name: run-ide
