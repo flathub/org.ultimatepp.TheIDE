@@ -76,6 +76,15 @@
     </screenshots>
     <content_rating type="oars-1.1"/>
     <releases>
+        <release version="2025.1.1" date="2025-07-29">
+            <p>
+                This is the first hotfix for the 2025.1 release. We highly recommend all users install this version, especially those running the latest Linux distributions with LLVM 20 or newer.
+            </p>
+            <ul>
+                <li>Fix warnings on Clang 20 related to non trivial memcall in Topt.h (Core)</li>
+                <li>Fix immediate Assist++ crash on Clang 20 (TheIDE)</li>
+            </ul>
+        </release>
         <release version="2025.1" date="2025-03-23"/>
         <release version="2024.1.1" date="2024-12-22"/>
         <release version="2023.2.1" date="2024-09-15">
