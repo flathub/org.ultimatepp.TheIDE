@@ -81,8 +81,8 @@
                 This is the first hotfix for the 2025.1 release. We highly recommend all users install this version, especially those running the latest Linux distributions with LLVM 20 or newer.
             </p>
             <ul>
-                <li>Fix warnings on Clang 20 related to non trivial memcall in Topt.h (Core)</li>
-                <li>Fix immediate Assist++ crash on Clang 20 (TheIDE)</li>
+                <li>Core: Fix warnings on Clang 20 related to non trivial memcall in Topt.h</li>
+                <li>Ide: Fix immediate Assist++ crash on Clang 20</li>
             </ul>
         </release>
         <release version="2025.1" date="2025-03-23"/>
