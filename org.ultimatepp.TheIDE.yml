@@ -1,9 +1,9 @@
 id: org.ultimatepp.TheIDE
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - "org.freedesktop.Sdk.Extension.llvm20"
+  - "org.freedesktop.Sdk.Extension.llvm21"
   - "org.freedesktop.Sdk.Extension.golang"
 command: run-ide.sh
 cleanup:
@@ -42,11 +42,11 @@ modules:
       - cp .clang-format /app/src/uppsrc/.clang-format
       - cp uppbox/Scripts/GCCMK.bm /app/bm/GCC.bm
       - cp run-ide-install-host-deps.sh /app/src/run-ide-install-host-deps.sh
-      - cp -a /usr/lib/sdk/llvm20/lib/libLLVM* /app/lib/
-      - cp -a /usr/lib/sdk/llvm20/lib/libLLVMTableGen.so* /app/lib/
-      - cp -a /usr/lib/sdk/llvm20/lib/libclang.so* /app/lib/
-      - cp -a /usr/lib/sdk/llvm20/lib/libclang-cpp.so* /app/lib/
-      - cp /usr/lib/sdk/llvm20/lib/LLVMgold.so /app/lib/
+      - cp -a /usr/lib/sdk/llvm21/lib/libLLVM* /app/lib/
+      - cp -a /usr/lib/sdk/llvm21/lib/libLLVMTableGen.so* /app/lib/
+      - cp -a /usr/lib/sdk/llvm21/lib/libclang.so* /app/lib/
+      - cp -a /usr/lib/sdk/llvm21/lib/libclang-cpp.so* /app/lib/
+      - cp /usr/lib/sdk/llvm21/lib/LLVMgold.so /app/lib/
     sources:
       - type: archive
         url: https://github.com/ultimatepp/ultimatepp/archive/refs/tags/2025.1.1.tar.gz
@@ -96,8 +96,8 @@ modules:
       - install -Dm755 host-spawn /app/bin/host-spawn
     sources:
       - type: archive
-        url: https://github.com/1player/host-spawn/archive/refs/tags/v1.6.1.tar.gz
-        sha256: 79d1038a055c408e364e3ba9ea21f7b8f0ecd3f2aa4b99d26c653bc678f796bb
+        url: https://github.com/1player/host-spawn/archive/refs/tags/v1.6.2.tar.gz
+        sha256: 77be74180d3c14cdf6199e2f5d77ad5a732b5902beecfdb81a3760038862af43
       - type: git
         url: https://github.com/godbus/dbus
         tag: v5.1.0
