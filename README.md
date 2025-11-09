@@ -15,7 +15,8 @@ flatpak install org.flatpak.Builder
 
 Additionaly, if you want you can install dependencies manualy, by running following commands:
 ```bash
-flatpak install org.freedesktop.Sdk.Extension.llvm19
+flatpak install org.freedesktop.Platform/x86_64/25.08
+flatpak install org.freedesktop.Sdk.Extension.llvm21
 flatpak install org.freedesktop.Sdk.Extension.golang
 ```
 
