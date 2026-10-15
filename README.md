@@ -15,9 +15,16 @@ flatpak install org.flatpak.Builder
 
 Additionaly, if you want you can install dependencies manualy, by running following commands:
 ```bash
-flatpak install org.freedesktop.Platform/x86_64/25.08
-flatpak install org.freedesktop.Sdk.Extension.llvm21
+flatpak install org.freedesktop.Platform/x86_64/26.08
+flatpak install org.freedesktop.Sdk.Extension.llvm22
 flatpak install org.freedesktop.Sdk.Extension.golang
+```
+
+To install the aarch64 version, simply add the `--arch=aarch64` flag after `install` command:
+```bash
+flatpak install org.freedesktop.Platform/aarch64/26.08
+flatpak install --arch=aarch64 org.freedesktop.Sdk.Extension.llvm22
+flatpak install --arch=aarch64 org.freedesktop.Sdk.Extension.golang
 ```
 
 ### Building
@@ -25,6 +32,9 @@ flatpak install org.freedesktop.Sdk.Extension.golang
 To build flatpak locally run the following command in your terminal:
 ```bash
 flatpak-builder --ccache --user --install --force-clean build-dir org.ultimatepp.TheIDE.yml
+
+# For aarch64 build on x86_64 host
+flatpak-builder --arch=aarch64 --ccache --user --install --force-clean build-dir org.ultimatepp.TheIDE.yml
 ```
 
 The `--ccache` parameter is higly recommended since it speedsup build time signficiently. Especially in situation when there is a need to build project several times.
