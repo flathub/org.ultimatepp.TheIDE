@@ -2,26 +2,30 @@ id: org.ultimatepp.TheIDE
 runtime: org.freedesktop.Platform
 runtime-version: "26.08"
 sdk: org.freedesktop.Sdk
+command: run-ide.sh
+
 sdk-extensions:
   - "org.freedesktop.Sdk.Extension.llvm22"
   - "org.freedesktop.Sdk.Extension.golang"
-command: run-ide.sh
+
 cleanup:
   - /bin/.cache
   - /bin/umk
   - /bm
+
 finish-args:
   - --socket=x11
   - --share=network
   - --share=ipc
   - --filesystem=host
   - --talk-name=org.freedesktop.Flatpak
+
 modules:
   - name: upp
     buildsystem: simple
     build-commands:
       - printf "#define flagFlatpak 1\\n" > uppsrc/uppconfig.h
-      - printf "#define IDE_VERSION \"2025.1.1\"\\n" > uppsrc/ide/version.h
+      - printf "#define IDE_VERSION \"2026.1\"\\n" > uppsrc/ide/version.h
       - make -f Makefile -j $FLATPAK_BUILDER_N_JOBS
       - printf "\\n" > uppsrc/uppconfig.h
       - make -f umkMakefile.in -j $FLATPAK_BUILDER_N_JOBS
@@ -34,7 +38,7 @@ modules:
       - mkdir -p /app/{src,lib,bm}
       - printf "\\n" > uppsrc/uppconfig.h
       - rm -f /app/src/ver.txt && touch /app/src/ver.txt
-      - printf "2025.1.1" > /app/src/ver.txt
+      - printf "2026.1" > /app/src/ver.txt
       - cp -r examples /app/src
       - cp -r reference /app/src
       - cp -r tutorial /app/src
@@ -53,6 +57,8 @@ modules:
         sha256: 54a13f169208c3a8bae05e5b4ed592bda37fea2389d8ce9b240ff12704fa0f86
       - type: file
         path: run-ide-install-host-deps.sh
+      - type: patch
+        path: patches/aarch64-fix.diff
 
   - name: upp-term
     buildsystem: simple
